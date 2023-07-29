@@ -21,6 +21,10 @@
                 <hr>
                 <p>{{$article->body}}</p>
                 <div class="text-center">
+                    @if(Auth::user() && Auth::user()->is_revisor)
+                        <a href="{{ route('revisor.acceptArticle', compact('article')) }}" class="btn btn-warning text-white my-5">Accetta articolo</a>
+                        <a href="{{ route('revisor.rejectArticle', compact('article')) }}" class="btn btn-warning text-white my-5">Rifiuta articolo</a>
+                    @endif
                     <a href="{{route('article.index')}}" class="btn btn-info text-white my-5">Torna indietro</a>
                 </div>
             </div>

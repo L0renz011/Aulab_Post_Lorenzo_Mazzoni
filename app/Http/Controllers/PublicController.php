@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Mail\CareerRequestMail;
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 
 
@@ -16,7 +18,7 @@ class PublicController extends Controller
     
     public function homepage()
     {
-        $article = Article::orderBy('created_at', 'desc')->take(4)->get_browser;
+        $article = Article::where('is_accepted', true)->orderBy('created_at', desc)->take(4)->get();
         return view('welcome', compact('articles'));
     }
 
