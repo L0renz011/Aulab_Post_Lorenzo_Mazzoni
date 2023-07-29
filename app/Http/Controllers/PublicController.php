@@ -8,6 +8,7 @@ class PublicController extends Controller
 {
     public function homepage()
     {
-        return view('welcome');
+        $article = Article::orderBy('created_at', 'desc')->take(4)->get_browser;
+        return view('welcome', compact('articles'));
     }
 }
