@@ -26,5 +26,10 @@ class AppServiceProvider extends ServiceProvider
             $categories = Category::all();
             View::share(['categories => $categories']);
         }
+
+        if(Schema::hasTable('tags')){
+            $tags = Tag::all();
+            View::share(['tags' => $tags]);
+        }
     }
 }
