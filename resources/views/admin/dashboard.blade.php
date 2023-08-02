@@ -47,5 +47,13 @@
             </div>
         </div>
     </div>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2>Le categorie della piattaforma</h2>
+                <x-metaInfo-table :metaInfos="$categories" metaType="categorie" />
+            </div>
+        </div>
+    </div>
 
 </x-layout>
