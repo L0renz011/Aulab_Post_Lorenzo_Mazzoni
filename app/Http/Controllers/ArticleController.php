@@ -44,9 +44,10 @@ class ArticleController extends Controller
             'body' => 'required|min:10',
             'image' => 'image|required',
             'category' => 'required',
+            'tags' => 'required',
         ]);
 
-        Article::create([
+        $article = Article::create([
             'title' => $request->title,
             'subtitle' => $request->subtitle,
             'body' => $request->body,
@@ -54,6 +55,15 @@ class ArticleController extends Controller
             'category_id' => $request->category,
             'user_id' => Auth::user()->id,
         ]);
+
+        $tags = explode(',', $request->tags);
+
+        foreach($tags as $tag){
+            $newTag = Tag::updateOrCreate([
+                'name' => $tag,
+            ]);
+            $article->tags()->attach($newTag);
+        }
 
         return redirect(route('homepage'))->with('message', 'Articolo creato correttamente');
     }

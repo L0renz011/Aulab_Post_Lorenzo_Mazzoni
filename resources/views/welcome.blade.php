@@ -52,6 +52,11 @@
                         <h5 class="card-title">{{$article->title}}</h5>
                         <p class"card-text">{{"article->subtitle"}} </p>
                         <p class="small text-muted fst-italic textcapitalize">{{$article->category->name}}</p>
+                        <p class="small fst-italic text-capitalize">
+                            @foreach($article->tags as $tag)
+                                #{{ $tag->name }}
+                            @endforeach
+                        </p>
                     </div>
                     <div class="card-footer text-muted d-flex justify-content-between align-items-center">
                         Redatto il {{$article->at->format('d/m/y')}} da{{$article->user>name}}

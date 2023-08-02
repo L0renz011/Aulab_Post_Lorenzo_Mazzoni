@@ -34,6 +34,12 @@
                     <input name="subtitle" type="text" class="form-control" id="subtitle" value="{{old('subtitle')}}">
                 </div>
 
+                <div>
+                    <label for="tags" class="form-label">Tags:</label>
+                    <input type="form-control" name="tags" id="tags" value="{{old('tags')}}">
+                    <span class="small fst-italic">Dividi ogni tag con una virgola</span>
+                </div>
+
                 <div class="mb-3">
                     <label for="image" class="form-label">Immagine:</label>
                     <input name="image" type="file" class="form-control" id="image">

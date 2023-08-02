@@ -18,6 +18,11 @@
                             <h5 class="card-title">{{ $article->title }}</h5>
                             <p class="card-text">{{ $article->subtitle }}</p>
                             <a href="{{ route('article.byCategory', ['category' => $article->category->id])}}" class="small text-muted fst-italic text-capitalize">{{ $article->category->name }}</a>
+                            <p class="small fst-italic text-capitalize">
+                                @foreach($article->tags as $tag)
+                                    #{{ $tag->name }}
+                                @endforeach
+                            </p>
                         </div>
                         <div class="card-footer text-muted d-flex justify-content-between align-items-center">
                             <a  class="" href="{{ route('article.byUser', ['user' => $article->user->id]) }}">Redatto il {{ $article->created_at->format('d/m/Y')}} da {{ $article->user->name}}</a>
