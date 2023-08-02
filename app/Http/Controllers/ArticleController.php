@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Http\Controllers\User
+use GuzzleHttp\Psr7\Query;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -107,6 +109,12 @@ class ArticleController extends Controller
     public function editor(Editor $editor){
         $articles = $editor->articles->sortByDesc('created_at');
         return view('article.editor', compact('editor', 'articles'));
+    }
+
+    public function articleSearch(Request $request){
+        $query = $request->input('query');
+        $articles = Article::search($query)->where('is_accepted', true)->orderBy('created_at'. 'desc');
+        return view ('article.search-index', compact('articles', 'query'));
     }
 
 }
