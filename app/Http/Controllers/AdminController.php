@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tag;
+use App\Models\Category;
 
 class AdminController extends Controller
 {
@@ -78,6 +79,15 @@ class AdminController extends Controller
         $category->delete();
 
         return redirect(route('admin.dashboard'))->with('message', 'Hai correttamente eliminato la categoria');
-    };
+    }
+
+    public function storeCategory(Request $request){
+        Category::create([
+            'name' => strtolower($request->name),
+        ]);
+
+        return redirect(route('admin.dashboard'))->with('message', 'Hai creato inserito correttamente una nuova categoria');
+    }
+
 
 }
