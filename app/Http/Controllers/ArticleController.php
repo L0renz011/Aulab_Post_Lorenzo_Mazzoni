@@ -119,6 +119,7 @@ class ArticleController extends Controller
                     'subtitle' => $request->subtitle,
                     'body' => $request->body,
                     'category_id' => $request->category,
+                    'slug' => Str::slug($request->title),
                 ]);
 
                 if($request->image){
