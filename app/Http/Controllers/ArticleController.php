@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\User;
+use App\Models\Tag;
 use App\Http\Controllers\User
 use GuzzleHttp\Psr7\Query;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class ArticleController extends Controller
 {
@@ -68,63 +71,101 @@ class ArticleController extends Controller
         return redirect(route('homepage'))->with('message', 'Articolo creato correttamente');
     }
     
-    /**
-     * Display the specified resource.
-     */
-    public function show(Article $article)
-    {
-        return view('article.show', compact('article'));
+        /**
+         * Display the specified resource.
+         */
+        public function show(Article $article)
+        {
+            return view('article.show', compact('article'));
+        }
+
+        /**
+         * Show the form for editing the specified resource.
+         */
+        public function edit(Article $article)
+        {
+            return view('article.edit', compact('article'));
+        }
+
+        /**
+         * Update the specified resource in storage.
+         */
+        public function update(Request $request, Article $article)
+        {
+            $request->validate([
+                'title' => 'required|min:5|unique:articles,title' . $article->id,
+                'subtitle' => 'required|min:5|unique:articles,subtitle' . $article->id,
+                'body' => 'required|min:10',
+                'image' => 'image',
+                'category' => 'required',
+                'tags' => 'required',
+            ]);
+
+            $article->update([
+                'title' => $request->title,
+                'subtitle' => $request->subtitle,
+                'body' => $request->body,
+                'category_id' => $request->category,
+            ]);
+
+            if($request->image){
+                Storage::delete($article->image);
+                $article->update([
+                    'image' => $request->file('image')->store('public/images'),
+                ]);
+            }
+
+            $tags = explode(',', $request->tags);
+            $newTags = [];
+
+            foreach($tags as $tag){
+                $newTag = Tag::updateOrCreate([
+                    'name' => $tag,
+                ]);
+
+                $newTags[] = $newTag->id;
+        }
+
+            $article->tags()->sync($newTags);
+
+            return redirect(route('writer.dashboard'))->with('message', 'Hai aggiornato correttamente l\'articolo);
+
+        }
+        /**
+         * Remove the specified resource from storage.
+         */
     }
+                       
+        public function destroy(Article $article)
+                {
+                    //
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Article $article)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Article $article)
-    {
-        //
-    }
+                public function byCategory(Category $category){
+                    $articles = $category->articles->sortByDesc('created_at')->filter(function($article){
+                        return $article->is_accepted == true;
+                    });
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Article $article)
-    {
-        //
-    }
+                    return view('article.by-category', compact('category', 'articles'));
+                }
 
-    public function byCategory(Category $category){
-        $articles = $category->articles->sortByDesc('created_at')->filter(function($article){
-            return $article->is_accepted == true;
-        });
+                public function byWriter(User $user){
+                    $articles = $user->articles->sortByDesc('created_at')->filter(function($article){
+                        return $article->is_accepted == true;
+                    });
 
-        return view('article.by-category', compact('category', 'articles'));
-    }
+                    return view('article.by-user', compact('user', 'articles'));
+                }
 
-    public function byWriter(User $user){
-        $articles = $user->articles->sortByDesc('created_at')->filter(function($article){
-            return $article->is_accepted == true;
-        });
+                public function editor(Editor $editor){
+                    $articles = $editor->articles->sortByDesc('created_at');
+                    return view('article.editor', compact('editor', 'articles'));
+                }
 
-        return view('article.by-user', compact('user', 'articles'));
-    }
+                public function articleSearch(Request $request){
+                    $query = $request->input('query');
+                    $articles = Article::search($query)->where('is_accepted', true)->orderBy('created_at'. 'desc');
+                    return view ('article.search-index', compact('articles', 'query'));
+                }
 
-    public function editor(Editor $editor){
-        $articles = $editor->articles->sortByDesc('created_at');
-        return view('article.editor', compact('editor', 'articles'));
-    }
-
-    public function articleSearch(Request $request){
-        $query = $request->input('query');
-        $articles = Article::search($query)->where('is_accepted', true)->orderBy('created_at'. 'desc');
-        return view ('article.search-index', compact('articles', 'query'));
-    }
-
-}
+            }

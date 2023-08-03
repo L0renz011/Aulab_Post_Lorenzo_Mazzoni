@@ -34,7 +34,7 @@
               <li><a class="dropdown-item" href="{{ route('revisor.dashboard') }}">Dashboard del revisore</a></li>
               @endif
               @if(Auth::user()->is_writer)
-              <li><a class="dropdown-item" href="{{ route('writer.dashboard') }}">Dashboard del writer</a></li>
+              <li><a class="dropdown-item" href="{{ route('writer.dashboard') }}">Dashboard del redattore</a></li>
               @endif
               <form method="POST" action="{{ route('logout') }}" id="form-logout" class="d-none">
                 @csrf
