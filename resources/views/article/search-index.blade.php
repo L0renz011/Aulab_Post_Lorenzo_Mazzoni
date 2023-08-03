@@ -24,6 +24,8 @@
                                 Non categorizzato
                                 </p>
                             @endif
+                            <span class="text-muted small fst-italic">- tempo di lettura {{ $article->readDuration()}} min</span>
+                            <hr>
                             <a href="{{ route('article.byCategory', ['category' => $article->category->id])}}" class="small text-muted fst-italic text-capitalize">{{ $article->category->name }}</a>
                             <p class="small fst-italic text-capitalize">
                                 @foreach($article->tags as $tag)

@@ -74,3 +74,5 @@ Route::get('/article/search', [ArticleController::class, 'articleSearch'])->name
 Route::middleware('admin')->group(function(){
     Route::put('/admin/edit/{tag}/tag', [AdminController::class, 'editTag'])->name('admin.editTag');
 });
+
+Route::get('/article/{article:slug}/show', [App\Http\Controllers\ArticleController::class, 'show'])->name('article.show');
