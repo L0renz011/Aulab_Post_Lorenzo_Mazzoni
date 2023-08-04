@@ -18,7 +18,7 @@ class PublicController extends Controller
     
     public function homepage()
     {
-        $article = Article::where('is_accepted', true)->orderBy('created_at', desc)->take(4)->get();
+        $article = Article::where('is_accepted', true)->orderBy('created_at', 'desc')->take(4)->get();
         return view('welcome', compact('articles'));
     }
 
