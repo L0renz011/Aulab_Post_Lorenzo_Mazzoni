@@ -9,7 +9,7 @@
     </thead>
 
     <tbody>
-        @foreach ($roleRequest as $user)
+        @foreach ($roleRequests as $user)
             <tr>
                 <th scope="row">{{$user->id}}</th>
                 <td>{{$user->name}}</td>
@@ -26,7 +26,7 @@
                         <a href="{{ route('admin.setWriter', compact('user')) }}" class="btn btn-warning text-black">Attiva {{ $role }}</a>
                     @break
                     @endswitch
-                        <button class="btn btn-info text-white">Attiva {{$role}}</button>
+                        {{--<button class="btn btn-info text-white">Attiva {{$role}}</button>--}}
                 </td>
             </tr>
         @endforeach

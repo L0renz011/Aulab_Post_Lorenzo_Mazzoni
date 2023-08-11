@@ -13,7 +13,8 @@
         <tr>
             <th scape="row">{{$metaInfo->id}}</th>
             <td>{{$metaInfo->name}}</td>
-            <td>{{count($metaInfo->articles)}}</td>
+            {{-- <td>{{count($metaInfo->articles)}}</td> --}}
+            <td>{{$metaInfo->articles}}</td>
             @if($metaType == "tags")
             <td>
                 <form action="{{route('admin.editTag', ['tag' => $metaInfo])}}" method="POST">

@@ -18,7 +18,7 @@ class PublicController extends Controller
     
     public function homepage()
     {
-        $article = Article::where('is_accepted', true)->orderBy('created_at', 'desc')->take(4)->get();
+        $articles = Article::where('is_accepted', true)->orderBy('created_at', 'desc')->take(4)->get();
         return view('welcome', compact('articles'));
     }
 
@@ -32,6 +32,12 @@ class PublicController extends Controller
             'email' => 'required|email',
             'message' => 'required',
         ]);
+
+
+        $user = Auth::user();
+        $role = $request->role;
+        $email = $request->email;
+        $message = $request->message;
 
         Mail::to('admin@theaulabpost.it')->send(new CareerRequestMail(compact('role', 'email', 'message')));
 
@@ -49,9 +55,10 @@ class PublicController extends Controller
                 break;
         }
 
-        $user->update();
+       //$user->update();
 
         return redirect(route('homepage'))->with('message', 'Grazie per averci contattato!');
+
     }
 
 }

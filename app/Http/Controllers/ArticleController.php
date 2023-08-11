@@ -187,10 +187,10 @@ class ArticleController extends Controller
             }
 
 
-        public function editor(Editor $editor)
+        public function editor(Article $article)
             {
-                $articles = $editor->articles->sortByDesc('created_at');
-                    return view('article.editor', compact('editor', 'articles'));
+                $articles = $article->articles->sortByDesc('created_at');
+                    return view('article.edit', compact('article', 'articles'));
             }
 
 

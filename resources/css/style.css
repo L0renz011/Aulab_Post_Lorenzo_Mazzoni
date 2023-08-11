@@ -1,0 +1,11 @@
+.fixed-top {
+    z-index: initial;
+}
+
+.navbar-brand {
+    height: 3rem;
+}
+
+.navbar-brand .logo {
+    height: 2.2rem;
+}

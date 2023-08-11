@@ -44,7 +44,7 @@
 
     <div class=""container my-5>
         <div class="row justify-content-around">
-            @foreach ('articles' as 'article')
+            @foreach ($articles as $article)
             <div class="col-12 col-md-3">
                 <div class="card">
                     <img src="{{Storage::url($article->image)}}" class="card-img-top" alt="...">

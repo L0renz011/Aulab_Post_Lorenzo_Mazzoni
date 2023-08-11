@@ -31,7 +31,7 @@
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Password:</label>
-                    <input name="password" type="email" class="form-control" id="password">
+                    <input name="password" type="passsword" class="form-control" id="password">
                 </div>
 
                 <div class="mt-2">
