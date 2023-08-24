@@ -8,7 +8,7 @@
     --}}
     
 
-    <div class="container-fluid p-5 bg-info text-center text-white">
+    <div class="container-fluid p-5 bg-info-white text-center text-black mb-4">
         <div class="row justify-content-center">
             <h1 class="display-1">
                 Registrati
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="mb-2">
-                        <button class="btn bg-info text-white">Registrati</button>
+                        <button class="btn bg-warning text-black">Registrati</button>
                         <p class="small mt-2">Già registrato? <a href="{{route('login')}}">Login</a></p>
                     </div>
                 </form>

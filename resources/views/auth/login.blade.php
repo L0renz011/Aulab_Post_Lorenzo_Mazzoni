@@ -1,5 +1,6 @@
 <x-layout>
-    <div class="container-fluid p-5 bg-info text-center text-white">
+
+    <div class="container-fluid p-5 bg-info-white text-center text-black mb-4">
         <div class="row justify-content-center">
             <h1 class="display-1">
                 Accedi
@@ -35,7 +36,7 @@
                 </div>
 
                 <div class="mt-2">
-                    <button class="btn btn-info text-white">Accedi</button>
+                    <button class="btn btn-warning text-black">Accedi</button>
                     <p class="small mt-2">Non sei ancora registrato? <a href="{{route('register')}}">Registrati</a></p>
                 </div>
                 </form>

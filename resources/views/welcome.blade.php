@@ -1,6 +1,6 @@
 <x-layout>
 
-    <div class="container-fluid p-5 bg-info text-center text-white">
+    <div class="container-fluid p-5 bg-info-white text-center text-black mb-4">
         <div class="row justify-content-center">
             <h1 class="display-1"> 
                 The Aulab Post
@@ -25,15 +25,41 @@
     @endauth
 
     @guest
-    <ul class="nav-item dropdown" aria-labelledby="navbarDropdown">
-        <li class="nav-item dropdown">
-            <a class="nav-link-dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Benvenuto
-        </a>
-        </li>
-        <li class="nav-item dropdown"><a class="nav-link-dropdown-toggle" href="{{route('register')}}">Registrati</a></li>
-        <li class="nav-item dropdown"><a class="nav-link-dropdown-toggle" href="{{route('login')}}">Accedi</a></li>
-    </ul>
+    <section class="container my-5">
+        <div class="row justify-content-around">
+    
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                            <h5 class="card-title">Benvenuto</h5>
+                            <p class="card-text">Benvenuto nel nostro sito! Scopri le ultime novità e contenuti che più ti interessano.</p>
+                            <a href="#" class="btn btn-warning">Scopri di più</a>
+                        </div>
+                </div>
+            </div>
+    
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Registrati</h5>
+                        <p class="card-text">Registrati per ottenere accesso a contenuti esclusivi e interagire con la nostra community.</p>
+                        <a href="{{ route('register') }}" class="btn btn-warning">Registrati ora</a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="col-12 col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Accedi</h5>
+                        <p class="card-text">Hai già un account? Accedi per accedere ai contenuti e alle funzionalità del sito.</p>
+                        <a href="{{ route('login') }}" class="btn btn-warning">Accedi</a>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </section>
     @endguest
 
     @if(session('message'))

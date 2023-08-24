@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg p-0 fixed-top bg-warning">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-       <img class="logo rounded-circle" src=https://th.bing.com/th/id/OIP.CHluVEdMXQd1FfDf7X8VxQHaHa?w=185&h=185&c=7&r=0&o=5&dpr=1.5&pid=1.7 alt="the aulab post">
+       <img class="logo rounded-circle" src="https://th.bing.com/th/id/OIP.CHluVEdMXQd1FfDf7X8VxQHaHa?w=185&h=185&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="the aulab post">
         
        </a>
       <button class="navbar-toggler button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,17 +55,10 @@
           @endguest
         </ul>
         <form class="d-flex" method="GET" action="{{ route('article.search') }}">
-          <input class="form-control- me-2" type="search" name="query" placeholder="Cosa stai cercando?" aria-label="Search">
-          <button class="btn btn-outline-info" type="submit">Cerca</button>
-        </form>
+          <input class="form-control-me-2" type="search" name="query" placeholder="Cosa stai cercando?" aria-label="Search">
+          <button class="btn btn-outline-warning btn-outline-black text-black" type="submit">Cerca</button>
           @csrf
-          <div class="search rounded-pill">
-            <input type="search" name="query" placeholder="Search">
-            <button>
-              <i class="fa fa-search"></i>
-            </button>
-          </div>
-        </form>
+      </form>
       </div>
     </div>
   </nav>

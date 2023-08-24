@@ -9,3 +9,7 @@
 .navbar-brand .logo {
     height: 2.2rem;
 }
+
+.btn-outline-black {
+    border-color: black;
+}
