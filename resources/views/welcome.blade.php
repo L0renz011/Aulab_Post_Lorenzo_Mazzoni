@@ -25,15 +25,15 @@
     @endauth
 
     @guest
+    <ul class="nav-item dropdown" aria-labelledby="navbarDropdown">
         <li class="nav-item dropdown">
             <a class="nav-link-dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Benvenuto
         </a>
-        <ul class="nav-item dropdown" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
-            <li><a class="dropdown-item" href="{{route('login')}}">Accedi</a></li>
-        </ul>
         </li>
+        <li class="nav-item dropdown"><a class="nav-link-dropdown-toggle" href="{{route('register')}}">Registrati</a></li>
+        <li class="nav-item dropdown"><a class="nav-link-dropdown-toggle" href="{{route('login')}}">Accedi</a></li>
+    </ul>
     @endguest
 
     @if(session('message'))
