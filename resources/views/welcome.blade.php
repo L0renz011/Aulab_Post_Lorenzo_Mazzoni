@@ -16,7 +16,7 @@
                 The Aulab Post
             </h1>
             <h2 class="display-1">
-                Il vero dell'informazione!
+                Il tuo contributo alla vera informazione!
             </h2>
         </div>
     </div>
