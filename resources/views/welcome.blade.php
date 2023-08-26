@@ -2,9 +2,22 @@
 
     <div class="container-fluid p-5 bg-info-white text-center text-black mb-4">
         <div class="row justify-content-center">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,300&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shadow Effect</title>
+        <link rel="stylesheet" href="styles.css">
             <h1 class="display-1"> 
                 The Aulab Post
             </h1>
+            <h2 class="display-1">
+                Il vero dell'informazione!
+            </h2>
         </div>
     </div>
     
