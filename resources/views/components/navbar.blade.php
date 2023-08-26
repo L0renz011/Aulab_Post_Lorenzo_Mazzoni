@@ -55,7 +55,7 @@
           @endguest
         </ul>
         <form class="d-flex" method="GET" action="{{ route('article.search') }}">
-          <input class="form-control-me-2" type="search" name="query" placeholder="Cosa stai cercando?" aria-label="Search">
+          <input class="form-control-me-2 rounded" type="search" name="query" placeholder="Cosa stai cercando?" aria-label="Search">
           <button class="btn btn-outline-warning btn-outline-black text-black" type="submit">Cerca</button>
           @csrf
       </form>
